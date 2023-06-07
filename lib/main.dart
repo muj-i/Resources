@@ -66,7 +66,7 @@ class Activity extends StatelessWidget {
 ///////////////////////////////////////
 /// Using a exter package named google_nav_bar as bottom navigation bar
 ///import 'package:google_nav_bar/google_nav_bar.dart';
-///google_nav_bar: ^5.0.6
+///google_nav_bar: ^5.0.6 //pubspec.yaml
 /// int _currentIndex = 1; /// using statefull
 
 /*      bottomNavigationBar: Container(
