@@ -16,6 +16,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
+///////////////////////////SnackBar
+MySnackBar(message, context) {
+  return ScaffoldMessenger.of(context)
+      .showSnackBar(SnackBar(content: (Text(message))));
+}
+//////////////////////////////////////////////////////
+
 /////////////////////////Alert Dialog
 MyAletrtDialog(context) {
   return showDialog(
@@ -25,7 +32,11 @@ MyAletrtDialog(context) {
             child: AlertDialog(
           title: Text('Do you want to delete permanently🗑️?'),
           actions: [
-            TextButton(onPressed: () {}, child: Text('Yes')),
+            TextButton(
+                onPressed: () {
+                  MySnackBar("done", context);
+                },
+                child: Text('Yes')),
             TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -35,8 +46,8 @@ MyAletrtDialog(context) {
         ));
       });
 }
-
 //////////////////////////////////////////////////////////////////
+
 class Activity extends StatelessWidget {
   const Activity({super.key});
 
