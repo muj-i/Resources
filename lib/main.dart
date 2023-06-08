@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+
 ///import 'pages.dart'; //using stateful
 ///import 'package:google_nav_bar/google_nav_bar.dart';
+///flutter_launcher_icons: ^0.13.1 //for icon under ""dependencies:""
+///flutter_icons: //for icon under ""dev_dependencies:""
+//  image_path: "logoo/logo.png"
+//run terminal
+/////flutter pub get
+//flutter pub run flutter_launcher_icons:main
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +21,37 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Activity(),
+
+      ///////////////////////dual theme
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.purple,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            // textStyle: const TextStyle(
+            //   fontSize: 16,
+            //   fontWeight: FontWeight.w600,
+            //   letterSpacing: .6,
+            // ),
+          ),
+        ),
+      ),
+      darkTheme: ThemeData(
+        primarySwatch: Colors.blueGrey,
+        brightness: Brightness.dark,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            // textStyle: const TextStyle(
+            //   fontSize: 16,
+            //   fontWeight: FontWeight.w600,
+            //   letterSpacing: .6,
+            // ),
+          ),
+        ),
+      ),
+      /////////////////////////////////////////
     );
   }
 }
@@ -51,10 +89,9 @@ MyAletrtDialog(context) {
 
 //////////////////////////////////////////////////
 
-
 class Activity extends StatelessWidget {
   const Activity({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,10 +101,10 @@ class Activity extends StatelessWidget {
       ),
 
 ///////////////////////////////////////
-/// Using a exter package named google_nav_bar as bottom navigation bar
-///import 'package:google_nav_bar/google_nav_bar.dart';
-///google_nav_bar: ^5.0.6 //pubspec.yaml
-/// int _currentIndex = 1; /// using statefull
+      /// Using a exter package named google_nav_bar as bottom navigation bar
+      ///import 'package:google_nav_bar/google_nav_bar.dart';
+      ///google_nav_bar: ^5.0.6 //pubspec.yaml
+      /// int _currentIndex = 1; /// using statefull
 
 /*      bottomNavigationBar: Container(
           color: const Color.fromARGB(255, 10, 29, 66).withAlpha(1000),
@@ -99,46 +136,82 @@ class Activity extends StatelessWidget {
 ////////////////////////////////////
 
 //////////////////////////////////////////
-///using default bottom nav bar
-bottomNavigationBar: Container(
-  color: Colors.black,
-  child:   Padding(
-    padding: const EdgeInsets.all(16.0),
-    child:   BottomNavigationBar(
-        backgroundColor:Colors.amber,
-        iconSize: 24,
-       selectedItemColor: Colors.green,
-       currentIndex: 1,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Page 1"),
-          BottomNavigationBarItem(icon: Icon(Icons.sailing), label: "Page 2"),
-          BottomNavigationBarItem(icon: Icon(Icons.people), label: "Page 3"),
-        ],
-        onTap: (int index) {
-          //setState(() {
-          // _currentIndex = index;
-        }),
-  ),
-),
-/////////////////////////////////////////////
-
-
-
-    body:
-    Center(
-      child: ElevatedButton(
+      ///using default bottom nav bar
+      bottomNavigationBar: Container(
+        color: Colors.black,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Delete',
-            style: TextStyle(fontSize: 50),
-          ),
+          padding: const EdgeInsets.all(16.0),
+          child: BottomNavigationBar(
+              backgroundColor: Colors.amber,
+              iconSize: 24,
+              selectedItemColor: Colors.green,
+              currentIndex: 1,
+              items: [
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.home), label: "Page 1"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.sailing), label: "Page 2"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.people), label: "Page 3"),
+              ],
+              onTap: (int index) {
+                //setState(() {
+                // _currentIndex = index;
+              }),
         ),
-        onPressed: () {
-          MyAletrtDialog(context);
-        },
       ),
-    ),
+/////////////////////////////////////////////
+      ///
+///////////////////////drawer
+      drawer: Drawer(
+          child: Container(
+        color: const Color.fromARGB(255, 10, 29, 66).withAlpha(2000),
+        child: ListView(children: [
+          DrawerHeader(
+              padding: EdgeInsets.zero,
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                ),
+                accountName: Text(
+                  'muj',
+                  style: TextStyle(fontSize: 44, color: Colors.white70),
+                ),
+                accountEmail: Text('mio'),
+                currentAccountPicture: Image.asset('images/favicon.png'),
+              )),
+          ListTile(
+              iconColor: Colors.white,
+              textColor: Colors.white,
+              leading: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Icon(Icons.home),
+              ),
+              title: Text("Page 1"),
+              onTap: () {
+                //setState(() {
+                //  _currentIndex = 0;
+                //  Navigator.pop(context);
+              }),
+        ]),
+      )),
+
+      //////////////////////////////////////
+
+      body: Center(
+        child: ElevatedButton(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Delete',
+              style: TextStyle(fontSize: 50),
+            ),
+          ),
+          onPressed: () {
+            MyAletrtDialog(context);
+          },
+        ),
+      ),
     );
   }
 }
