@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 ///flutter_launcher_icons: ^0.13.1 //for icon under ""dependencies:""
 ///flutter_icons: //for icon under ""dev_dependencies:""
 //  image_path: "logoo/logo.png"
-//run terminal
-/////flutter pub get
-//flutter pub run flutter_launcher_icons:main
+//run on terminal
+///flutter pub get
+///flutter pub run flutter_launcher_icons:main
 
 void main() {
   runApp(const MyApp());
