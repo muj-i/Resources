@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       ///////////////////////dual theme
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.cyan,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 12),
@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      themeMode: ThemeMode.light, //  you can change theme by changing value .light/.dark
       /////////////////////////////////////////
     );
   }
@@ -197,19 +198,49 @@ class Activity extends StatelessWidget {
       )),
 
       //////////////////////////////////////
+      
 
-      body: Center(
-        child: ElevatedButton(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Delete',
-              style: TextStyle(fontSize: 50),
-            ),
+      body: SingleChildScrollView(
+        child: Align(
+          alignment: Alignment.topCenter, // Adjust the alignment as per your requirement
+          child: Column(
+            children: [
+              Image.network('https://dartpad.dev/dart-192.png'),
+              InkWell(
+                splashColor: Color.fromARGB(255, 13, 238, 5),
+                onTap: () => MySnackBar("MSI Logo", context),
+                child: Image.network('https://storage-asset.msi.com/frontend/imgs/2021-msi-series_logo-gaming.png')),
+              ElevatedButton(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Delete',
+                    style: TextStyle(fontSize: 50),
+                  ),
+                ),
+                onPressed: () {
+                  MyAletrtDialog(context);
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "type num here",
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(100))
+                  ),
+                ),
+              ),
+              TextField(),
+              TextField(),
+              TextField(),
+              TextField(),
+              TextField(),
+            ],
           ),
-          onPressed: () {
-            MyAletrtDialog(context);
-          },
         ),
       ),
     );
