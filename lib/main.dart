@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       ///////////////////////dual theme
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.red,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 12),
@@ -92,13 +92,19 @@ MyAletrtDialog(context) {
 //////////////////////////////////////////////////
 
 class Activity extends StatelessWidget {
-  const Activity({super.key});
+  TextEditingController _passwordTextEditingController =
+      TextEditingController();
+  TextEditingController _userNameTextEditingController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Resouces'),
+        title: Text(
+          'Resouces',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.pink,
       ),
 
@@ -207,7 +213,10 @@ class Activity extends StatelessWidget {
               .topCenter, // Adjust the alignment as per your requirement
           child: Column(
             children: [
-              Image.network('https://dartpad.dev/dart-192.png'),
+              Image.network(
+                'https://pbs.twimg.com/profile_images/1417471791845478403/MzAWCfK7_400x400.jpg',
+                height: 60,
+              ),
               InkWell(
                   splashColor: Color.fromARGB(255, 13, 238, 5),
                   onTap: () => MySnackBar("MSI Logo", context),
@@ -242,7 +251,25 @@ class Activity extends StatelessWidget {
                 ),
               ),
 ////////////////////////////////////////////
-              ///
+
+              //////////////list tile
+              ListTile(
+                leading: Icon(
+                  Icons.account_circle_rounded,
+                  size: 50,
+                ),
+                title: Text(
+                  'Tawhedul Islam',
+                  style: TextStyle(fontSize: 22),
+                ),
+                subtitle: Text(
+                  'Gamer',
+                  style: TextStyle(fontSize: 16),
+                ),
+                tileColor: Colors.greenAccent,
+              ),
+////////////////////////////////////
+
               ///////////////////////////text field
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -269,21 +296,48 @@ class Activity extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(50.0),
                 child: TextField(
-                    obscureText: true,
+                    controller: _userNameTextEditingController,
 
                     ///onChanged: (value) => print(value),
                     onSubmitted: (value) => print(value),
                     decoration: InputDecoration(
-                        hintText: "pass",
+                        hintText: "Name",
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(20)))),
               ),
 
-              TextField(
-                textInputAction: TextInputAction.next,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                    controller: _passwordTextEditingController,
+                    //obscureText: true,
+
+                    //onSubmitted: (value) => print(value),
+                    decoration: InputDecoration(
+                        label: Text("Enter password"),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.green),
+                            borderRadius: BorderRadius.circular(20)))),
               ),
-              TextField(),
+              ElevatedButton(
+                  onPressed: () {
+                    print(_passwordTextEditingController.text);
+                    _userNameTextEditingController.text = "kol";
+                    _passwordTextEditingController.clear();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Show on console'),
+                  )),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  textInputAction: TextInputAction.next,
+                ),
+              ),
+
               TextField(),
               /////////////////////////////////////////
               ///
