@@ -51,7 +51,8 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      themeMode: ThemeMode.light, //  you can change theme by changing value .light/.dark
+      themeMode: ThemeMode
+          .light, //  you can change theme by changing value .light/.dark
       /////////////////////////////////////////
     );
   }
@@ -143,8 +144,9 @@ class Activity extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: BottomNavigationBar(
-              backgroundColor: Colors.amber,
+              backgroundColor: Colors.purpleAccent,
               iconSize: 24,
+              unselectedItemColor: Colors.orange,
               selectedItemColor: Colors.green,
               currentIndex: 1,
               items: [
@@ -198,18 +200,19 @@ class Activity extends StatelessWidget {
       )),
 
       //////////////////////////////////////
-      
 
       body: SingleChildScrollView(
         child: Align(
-          alignment: Alignment.topCenter, // Adjust the alignment as per your requirement
+          alignment: Alignment
+              .topCenter, // Adjust the alignment as per your requirement
           child: Column(
             children: [
               Image.network('https://dartpad.dev/dart-192.png'),
               InkWell(
-                splashColor: Color.fromARGB(255, 13, 238, 5),
-                onTap: () => MySnackBar("MSI Logo", context),
-                child: Image.network('https://storage-asset.msi.com/frontend/imgs/2021-msi-series_logo-gaming.png')),
+                  splashColor: Color.fromARGB(255, 13, 238, 5),
+                  onTap: () => MySnackBar("MSI Logo", context),
+                  child: Image.network(
+                      'https://storage-asset.msi.com/frontend/imgs/2021-msi-series_logo-gaming.png')),
               ElevatedButton(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -222,25 +225,69 @@ class Activity extends StatelessWidget {
                   MyAletrtDialog(context);
                 },
               ),
+/////////////////////////////////////card
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Card(
+                  elevation: 5,
+                  shadowColor: Colors.pink,
+                  color: Colors.blueAccent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(23)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('kikukuk',
+                        style: TextStyle(fontSize: 44, color: Colors.white70)),
+                  ),
+                ),
+              ),
+////////////////////////////////////////////
+              ///
+              ///////////////////////////text field
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: TextField(
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    hintText: "type num here",
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(100))
-                  ),
+                      hintText: "type num here",
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(100))),
                 ),
               ),
-              TextField(),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red))),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(50.0),
+                child: TextField(
+                    obscureText: true,
 
-              
+                    ///onChanged: (value) => print(value),
+                    onSubmitted: (value) => print(value),
+                    decoration: InputDecoration(
+                        hintText: "pass",
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(20)))),
+              ),
+
+              TextField(
+                textInputAction: TextInputAction.next,
+              ),
               TextField(),
               TextField(),
-              TextField(),
-              TextField(),
+              /////////////////////////////////////////
+              ///
+              ///////////////////////////////////////
             ],
           ),
         ),
