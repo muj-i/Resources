@@ -91,9 +91,15 @@ MyAletrtDialog(context) {
 
 //////////////////////////////////////////////////
 
-class Activity extends StatelessWidget {
+class Activity extends StatefulWidget {
+  @override
+  State<Activity> createState() => _ActivityState();
+}
+
+class _ActivityState extends State<Activity> {
   TextEditingController _passwordTextEditingController =
       TextEditingController();
+
   TextEditingController _userNameTextEditingController =
       TextEditingController();
 

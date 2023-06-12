@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resources/pages.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,15 +22,31 @@ MySnackBar(message, context) {
 }
 //////////////////////////////////////////////////////
 
-class Activity extends StatelessWidget {
+class Activity extends StatefulWidget {
+  @override
+  State<Activity> createState() => _ActivityState();
+}
+
+class _ActivityState extends State<Activity> {
 /////json
   var jsonItems = [
     {
       'img':
           'https://lh3.googleusercontent.com/a/AAcHTtepn_l7UbUPKA_1CoBzcptgpXaMEhYgq56U6dx7=s96-c-rg-br100',
       'title': 'mee'
+    },
+    {
+      'img':
+          'https://lh3.googleusercontent.com/a/AAcHTtepn_l7UbUPKA_1CoBzcptgpXaMEhYgq56U6dx7=s96-c-rg-br100',
+      'title': 'muee'
+    },
+    {
+      'img':
+          'https://lh3.googleusercontent.com/a/AAcHTtepn_l7UbUPKA_1CoBzcptgpXaMEhYgq56U6dx7=s96-c-rg-br100',
+      'title': 'miee'
     }
   ];
+
 /////
   @override
   Widget build(BuildContext context) {
@@ -48,12 +65,15 @@ class Activity extends StatelessWidget {
         itemCount: jsonItems.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              mySnackbar(context,jsonItems[index]['title']);
+            },
             child: Container(
               margin: EdgeInsets.all(10),
               width: double.infinity,
               child: Image.network(
                 jsonItems[index]['img']!,
+                fit: BoxFit.fill,
               ),
             ),
           );
