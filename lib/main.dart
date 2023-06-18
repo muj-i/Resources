@@ -88,6 +88,27 @@ MyAletrtDialog(context) {
         ));
       });
 }
+/*
+showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('Congratulations!'),
+                                content: Text('You\'ve bought 5 ${products[index].name}!'),
+                                actions: [
+                                  OutlinedButton(
+                                    child: Text('OK'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              ),
+                            );
+                            */
+
+
+
+
 
 //////////////////////////////////////////////////
 
