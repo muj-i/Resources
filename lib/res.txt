@@ -44,3 +44,18 @@ actions: [
                       child: Text('Save'),
                     )
                   ],
+
+
+scaffold not found
+
+GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+in scaffold 
+key: scaffoldKey
+
+then
+scaffoldKey.currentState!.showBottomSheet(
+      (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Container(
